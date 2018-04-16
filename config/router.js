@@ -1,6 +1,8 @@
 const router = require('express').Router(); //Create an express router
 const registrations = require('../controllers/registrations');
 const login = require('../controllers/login');
+const stadiums = require('../controllers/stadiums');
+
 router.get('/', (req, res) => res.render('pages/home')); //created homepage route
 
 router.route('/register')
@@ -13,5 +15,8 @@ router.route('/login')
 
 router.route('/logout')
   .get(login.delete);
+
+router.route('/stadiums')
+  .get(stadiums.index);
 
 module.exports = router; //export the router
