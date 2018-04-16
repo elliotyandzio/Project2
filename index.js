@@ -3,6 +3,11 @@ const app = express(); //Invoking the express module
 const PORT = process.env.PORT || 3000; //Connect the app to the port
 const expressLayouts = require('express-ejs-layouts'); //Add express layouts to the application
 const router = require('./config/router'); // Importing the router so we can access it in this file
+const mongoose = require('mongoose'); //Add mongoose into the application
+const Promise = require('bluebird');
+
+mongoose.Promise = Promise; //
+mongoose.connect('mongodb://localhost/review-site');  //Connect to the database
 
 app.set('view engine', 'ejs');//Configure express to use ejs
 app.set('views', `${__dirname}/views`); //Tells express to look for the template files in views folder.
