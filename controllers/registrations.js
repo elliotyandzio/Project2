@@ -12,7 +12,7 @@ function createRoute(req, res){
     })
     .catch((err) => {
       if(err.name === 'ValidationError'){
-        return res.status(400).render('registrations/index', {message: err.toString()});
+        return res.status(400).render('/', {message: err.toString()});
       }
     });
 }
