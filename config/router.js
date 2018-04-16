@@ -13,5 +13,5 @@ router.route('/login')
 
 router.route('/logout')
   .get(login.delete);
-  
+
 module.exports = router; //export the router

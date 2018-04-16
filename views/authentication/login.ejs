@@ -1,5 +1,14 @@
-<h1>Login</h1>
 <div class="row">
+  <% if(messages.danger){ %>
+    <div class="col s12 l12">
+      <div class="card red lighten-3">
+        <div class="card-content red-text">
+          <span class="card-title"><%= messages.danger %></span>
+        </div>
+      </div>
+    </div>
+  <% } %>
+  <h1>Login</h1>
   <form class="col l12" action="/login" method="post">
     <div class="input-field col l12">
       <input type="email" name="email" id="email_field" required>

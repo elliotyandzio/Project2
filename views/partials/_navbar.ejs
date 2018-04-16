@@ -5,6 +5,8 @@
       <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
       <% if(locals.isLoggedIn) { %>
+      <li><a href="/stadiums">Stadiums</a></li>
+      <li><a href="/stadiums/new">Add Stadiums</a></li>      
       <li><a href="/logout">Logout (Signed in as <%= locals.user.username %>)</a></li>
       <% } else { %>
       <li><a href="/login">Login</a></li>
