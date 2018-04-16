@@ -2,6 +2,7 @@ const express = require('express'); //Add express into the application
 const app = express(); //Invoking the express module
 const bodyParser     = require('body-parser');
 const expressLayouts = require('express-ejs-layouts'); //Add express layouts to the application
+const methodOverride      = require('method-override');
 const User                = require('./models/user');
 const mongoose = require('mongoose'); //Add mongoose into the application
 mongoose.Promise = require('bluebird');
@@ -20,6 +21,14 @@ app.use(expressLayouts);
 app.use(express.static(`${__dirname}/public`)); //Create a public folder to hold the static files such as CSS and use side JS
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(methodOverride(req => {
+  if(req.body && typeof req.body === 'object' && '_method' in req.body){
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 app.use(session({           // This is cookies
   secret: 'my super secret token',

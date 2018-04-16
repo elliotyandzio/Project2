@@ -3,4 +3,8 @@
   <img class="responsive-img" src="<%= stadiums.photo%>" alt="">
   <h5><%= stadiums.address %></h5>
   <h5><%= stadiums.team %></h5>
+  <form class="" action="/stadiums/<%= stadiums.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn red">DELETE</button>
+    </form>
 </div>

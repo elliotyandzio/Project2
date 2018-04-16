@@ -17,9 +17,14 @@ router.route('/logout')
   .get(login.delete);
 
 router.route('/stadiums')
-  .get(stadiums.index);
+  .get(stadiums.index)
+  .post(stadiums.create);
+
+router.route('/stadiums/new')
+  .get(stadiums.new);
 
 router.route('/stadiums/:id')
-  .get(stadiums.show);
+  .get(stadiums.show)
+  .delete(stadiums.delete);
 
 module.exports = router; //export the router
