@@ -19,4 +19,7 @@ router.route('/logout')
 router.route('/stadiums')
   .get(stadiums.index);
 
+router.route('/stadiums/:id')
+  .get(stadiums.show);
+
 module.exports = router; //export the router

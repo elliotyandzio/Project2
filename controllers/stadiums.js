@@ -10,6 +10,15 @@ function stadiumsIndex(req, res){
     });
 }
 
+function stadiumsShow(req, res){
+  Stadium
+    .findById(req.params.id)
+    //.populate('photos')
+    .exec()
+    .then(stadiums => res.render('stadiums/show', {stadiums}));
+}
+
 module.exports = {
-  index: stadiumsIndex
+  index: stadiumsIndex,
+  show: stadiumsShow
 };
