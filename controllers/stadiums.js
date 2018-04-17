@@ -3,7 +3,7 @@ const Stadium = require('../models/stadium');
 function stadiumsIndex(req, res){
   Stadium
     .find()
-    //.populate('user')
+    .populate('user')
     .exec()
     .then(stadiums => {
       res.render('stadiums/index', {stadiums});
@@ -24,7 +24,7 @@ function stadiumsNew(req, res){
 
 function stadiumsCreate(req, res) {
   console.log(req.body);
-  //req.body.user = req.currentUser;
+  req.body.user = req.currentUser;
 
   Stadium
     .create(req.body)

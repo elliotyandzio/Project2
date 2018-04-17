@@ -1,21 +1,49 @@
+<h1>Stadiums</h1>
 <div class="row">
-  <h1>Stadiums</h1>
-  <% stadiums.forEach(stadia => { %>
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-image">
-          <img class="responsive-img" src="<%=stadia.photo%>">
-          <span class="card-title"><%=stadia.name%></span>
-        </div>
-        <div class="card-content">
-          <h6><%=stadia.address%></h6>
-          <h6><%=stadia.team%></h6>
-        </div>
-        <div class="card-action">
-          <a href="/stadiums/<%= stadia._id %>">More Info</a>
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active" href="#test1">All Stadiums</a></li>
+      <li class="tab col s3"><a href="#test2">My Stadiums</a></li>
+    </ul>
+  </div>
+  <div id="test1" class="col s12">
+    <% stadiums.forEach(stadia => { %>
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image">
+            <img class="responsive-img" src="<%=stadia.photo%>">
+            <span class="card-title"><%=stadia.name%></span>
+          </div>
+          <div class="card-content">
+            <h6><%=stadia.address%></h6>
+            <h6><%=stadia.team%></h6>
+          </div>
+          <div class="card-action">
+            <a href="/stadiums/<%= stadia._id %>">More Info</a>
+          </div>
         </div>
       </div>
-
-    </div>
     <% }) %>
   </div>
+  <div id="test2" class="col s12">
+    <% stadiums.forEach(stadia => { %>
+      <%if((stadia.user && stadia.user.id) === locals.user.id ){%>
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image">
+            <img class="responsive-img" src="<%=stadia.photo%>">
+            <span class="card-title"><%=stadia.name%></span>
+          </div>
+          <div class="card-content">
+            <h6><%=stadia.address%></h6>
+            <h6><%=stadia.team%></h6>
+          </div>
+          <div class="card-action">
+            <a href="/stadiums/<%= stadia._id %>">More Info</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <% }) %>
+  </div>
+</div>
