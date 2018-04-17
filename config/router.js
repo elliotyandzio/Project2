@@ -25,6 +25,10 @@ router.route('/stadiums/new')
 
 router.route('/stadiums/:id')
   .get(stadiums.show)
-  .delete(stadiums.delete);
+  .delete(stadiums.delete)
+  .put(stadiums.update);
+
+router.route('/stadiums/:id/edit')
+  .get(stadiums.edit);
 
 module.exports = router; //export the router

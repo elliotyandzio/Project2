@@ -36,6 +36,25 @@ function stadiumsCreate(req, res) {
     });
 }
 
+function stadiumsEdit(req, res) {
+  Stadium
+    .findById(req.params.id)
+    //.populate('photos')
+    .exec()
+    .then(stadiums => res.render('stadiums/edit', {stadiums}));
+}
+
+function stadiumsUpdate(req, res){
+  Stadium
+    .findById(req.params.id)
+    .exec()
+    .then(stadiums => {
+      stadiums =Object.assign(stadiums, req.body);
+      return stadiums.save();
+    })
+    .then(stadiums => res.redirect(`/stadiums/${stadiums._id}`));
+}
+
 function stadiumsDelete (req, res) {
   Stadium
     .findById(req.params.id)
@@ -49,5 +68,7 @@ module.exports = {
   show: stadiumsShow,
   delete: stadiumsDelete,
   new: stadiumsNew,
-  create: stadiumsCreate
+  create: stadiumsCreate,
+  edit: stadiumsEdit,
+  update: stadiumsUpdate
 };

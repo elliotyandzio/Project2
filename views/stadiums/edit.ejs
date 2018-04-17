@@ -1,0 +1,25 @@
+<div class="row">
+  <h2>Edit <%= stadiums.name %></h2>
+  <form class="col l12" action="/stadiums/<%= stadiums.id %>" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="input-field col l12">
+      <input type="text" name="name" id="name_field" value="<%= stadiums.name %>">
+      <label for="name_field">Name</label>
+    </div>
+    <div class="input-field col l12">
+      <input type="text" name="address" id="address_field" value="<%= stadiums.address %>">
+      <label for="address_field">Address</label>
+    </div>
+    <div class="input-field col l12">
+      <input type="text" name="team" id="team_field" value="<%= stadiums.team %>">
+      <label for="team_field">Team</label>
+    </div>
+    <div class="input-field col l12">
+      <input type="text" name="photo" id="photo_field" value="<%= stadiums.photo %>">
+      <label for="photo_field">Photo URL</label>
+    </div>
+    <div class="input-field col l12">
+      <button class="green btn">Update Stadium</button>
+    </div>
+  </form>
+</div>
