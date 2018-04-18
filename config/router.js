@@ -41,4 +41,10 @@ router.route('/stadiums/:id')
 router.route('/stadiums/:id/edit')
   .get(secureRoute, stadiums.edit);
 
+router.route('/stadiums/:id/comments')
+  .post(stadiums.createComment);
+
+router.route('/stadiums/:id/comments/:commentId')
+  .delete(stadiums.deleteComment);
+
 module.exports = router; //export the router

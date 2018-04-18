@@ -13,7 +13,7 @@ function stadiumsIndex(req, res){
 function stadiumsShow(req, res){
   Stadium
     .findById(req.params.id)
-    //.populate('photos')
+    .populate('comments.user')
     .exec()
     .then(stadiums => res.render('stadiums/show', {stadiums}));
 }
@@ -63,6 +63,51 @@ function stadiumsDelete (req, res) {
     .then(() => res.redirect('/stadiums'));
 }
 
+function commentsCreate(req, res) {
+  // adding the current user to the comment form data
+  req.body.user = req.currentUser;
+  // finding the photo that the comment must be added to
+  Stadium
+    .findById(req.params.id)
+    .exec()
+    .then(stadium => {
+      // creating a new comment with the form data.
+      // pushing the comment into the array of comments for the photo
+      stadium.comments.push(req.body);
+
+      // saving the photo
+      return stadium.save();
+    })
+    .then(stadium => {
+      // redirecting back to the photos show view
+      res.redirect(`/stadiums/${stadium._id}`);
+    })
+    .catch(err => console.log(err));
+}
+
+function commentsDelete(req, res) {
+  // finding the photo that the comment must be added to
+  Stadium
+    .findById(req.params.id)
+    .exec()
+    .then(stadium => {
+      console.log(stadium);
+      // finding comment to delete by it's id
+      const comment = stadium.comments.id(req.params.commentId);
+      // deleting that comment
+      comment.remove();
+
+      // saving the photo
+      return stadium.save();
+    })
+    .then(stadium => {
+      // redirecting back to the photos show view
+      res.redirect(`/stadiums/${stadium._id}`);
+    })
+    .catch(err => console.log(err));
+}
+
+
 module.exports = {
   index: stadiumsIndex,
   show: stadiumsShow,
@@ -70,5 +115,7 @@ module.exports = {
   new: stadiumsNew,
   create: stadiumsCreate,
   edit: stadiumsEdit,
-  update: stadiumsUpdate
+  update: stadiumsUpdate,
+  createComment: commentsCreate,
+  deleteComment: commentsDelete
 };
