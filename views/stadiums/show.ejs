@@ -1,33 +1,37 @@
 <div class="row">
-  <h1><%= stadiums.name %></h1>
-  <img class="responsive-img" src="<%= stadiums.photo%>" alt="">
-  <h5><%= stadiums.address %></h5>
-  <h5><%= stadiums.team %></h5>
-
-  <form class="" action="/stadiums/<%= stadiums.id %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="btn red">DELETE</button>
-    </form>
-  <form action="/stadiums/<%= stadiums._id %>/edit">
-    <input type="hidden" value="Edit" />
-    <button class="btn orange">Edit</button>
-  </form>
-
-<h4>Post a comment</h4>
-<form action="/stadiums/<%= stadiums.id %>/comments" method="post">
-  <input type="text" name="content">
-  <input type="submit">
-</form>
-
-<h4>Listing Comments</h4>
-<% stadiums.comments.forEach(comment => { %>
-  <div>
-    <p><strong><%= comment.user.username %></strong><%= comment.content %></p>
-    <form method="post" action="/stadiums/<%= stadiums.id %>/comments/<%= comment.id %>">
-    console.log("/stadiums/<%= stadiums.id %>/comments/<%= comment.id %>")
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit">Delete Comment</button>
-    </form>
+  <h1 class="center-align"><%= stadiums.name %></h1>
+  <div class="center-align">
+    <img class="responsive-img" src="<%= stadiums.photo%>" alt="">
+    <h5>Address: <%= stadiums.address %></h5>
+    <h5>Team: <%= stadiums.team %></h5>
+    <br>
   </div>
+
+
+<h4 class="center blue-text lighten-1">Comments</h4>
+<ul class="collection">
+<% stadiums.comments.forEach(comment => { %>
+  <li class="collection-item">
+    <form class="right-align" method="post" action="/stadiums/<%= stadiums.id %>/comments/<%= comment.id %>">
+    <%if((comment.user && comment.user.id) === locals.user.id ){%>
+      <input type="hidden" name="_method" value="delete">
+      <button class="btn red right" type="submit"><i class="material-icons small">close</i></button>
+      <% } %>
+    </form>
+    <h5 class="orange-text text-darken-2"><%= comment.user.username %></h5>
+    <p><%= comment.content %></p>
+  </li>
 <% }); %>
+</ul>
+
+<ul class="collection">
+  <li class="collection-item">
+    <h4 class="blue-text lighten-1">Post a comment</h4>
+    <form action="/stadiums/<%= stadiums.id %>/comments" method="post">
+      <input placeholder="Add your comment here" type="text" name="content">
+      <input class="btn blue lighten-1" type="submit">
+    </form>
+  </li>
+</ul>
+
 </div>

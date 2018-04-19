@@ -1,17 +1,32 @@
-<nav class="blue-grey">
+<nav class="blue lighten-1">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Logo</a>
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="/logout">Logout </a></li>
+    </ul>
+    <a href="#" class="brand-logo">Stadia</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="/">Home</a></li>
       <% if(locals.isLoggedIn) { %>
       <li><a href="/stadiums">Stadiums</a></li>
       <li><a href="/stadiums/new">Add Stadiums</a></li>
-      <li><a href="/logout">Logout (Signed in as <%= locals.user.username %>)</a></li>
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">(Signed in as <%= locals.user.username %>)<i class="material-icons right">arrow_drop_down</i></a></li>
       <% } else { %>
       <li><a href="/login">Login</a></li>
       <li><a href="/register">Register</a></li>
       <% } %>
-
     </ul>
   </div>
 </nav>
+
+<ul class="sidenav" id="mobile-demo">
+  <li><a href="/">Home</a></li>
+  <% if(locals.isLoggedIn) { %>
+  <li><a href="/stadiums">Stadiums</a></li>
+  <li><a href="/stadiums/new">Add Stadiums</a></li>
+  <li><a href="/logout">Logout (Signed in as <%= locals.user.username %>)</a></li>
+  <% } else { %>
+  <li><a href="/login">Login</a></li>
+  <li><a href="/register">Register</a></li>
+  <% } %>
+</ul>

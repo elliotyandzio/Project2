@@ -8,6 +8,9 @@
   width: 40%;
   float: right;
 } */
+body {
+  font-family: 'Rubik', sans-serif;
+}
 
 .card img {
     height: 300px;
@@ -16,4 +19,24 @@
 .card img.materialized.active {
     max-height: none;
     object-fit: none;
+}
+
+form {
+  display: inline;
+}
+
+button {
+  display: inline;
+}
+
+#dropdown1 {
+  top: -65px;
+}
+
+.tabs .indicator{
+  background-color: #1e88e5;/*your color*/
+}
+
+h1 {
+  color: #1e88e5;
 }

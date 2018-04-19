@@ -91,7 +91,6 @@ function commentsDelete(req, res) {
     .findById(req.params.id)
     .exec()
     .then(stadium => {
-      console.log(stadium);
       // finding comment to delete by it's id
       const comment = stadium.comments.id(req.params.commentId);
       // deleting that comment

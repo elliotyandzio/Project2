@@ -1,9 +1,9 @@
-<h1>Stadiums</h1>
+<h1 class="center-align">Stadiums</h1>
 <div class="row">
   <div class="col s12">
     <ul class="tabs">
-      <li class="tab col s3"><a class="active" href="#test1">All Stadiums</a></li>
-      <li class="tab col s3"><a href="#test2">My Stadiums</a></li>
+      <li class="tab col s3"><a class="active blue-text white" href="#test1">All Stadiums</a></li>
+      <li class="tab col s3"><a class="blue-text white" href="#test2">My Stadiums</a></li>
     </ul>
   </div>
   <div id="test1" class="col s12">
@@ -38,8 +38,15 @@
                 <p><%=stadia.address%></p>
               </div>
               <div class="card-action">
-                <div class="right-align"><button class="btn orange"><i class="material-icons small">create</i></button>
-                <button class="btn red"><i class="material-icons small">close</i></button></div>
+                <div class="right-align">
+                <form action="/stadiums/<%= stadia._id %>/edit">
+                  <input type="hidden" value="Edit" />
+                  <button class="btn orange"><i class="material-icons small">create</i></button>
+                </form>
+                <form class="" action="/stadiums/<%= stadia.id %>" method="POST">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn red"><i class="material-icons small">close</i></button></div>
+                </form>
               </div>
             </div>
           </div>
