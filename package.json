@@ -5,6 +5,9 @@
   "repository": "git@github.com:elliotyandzio/Project2.git",
   "author": "Elliot Yandzio <elliotyandzio@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  }
   "dependencies": {
     "bcrypt": "^2.0.0",
     "bluebird": "^3.5.1",
