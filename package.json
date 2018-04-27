@@ -6,7 +6,7 @@
   "author": "Elliot Yandzio <elliotyandzio@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
   }
   "dependencies": {
     "bcrypt": "^2.0.0",
